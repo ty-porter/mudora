@@ -13,6 +13,7 @@ func applyState(s game.State) {
 	icons.Bow.State = bowTier(s.Bow)
 	icons.Boomerang.State = clampTier(int(s.Boomerang), 2)
 	icons.Hookshot.State = boolTier(s.Hookshot)
+	icons.Bomb.State = boolTier(s.Bombs)
 	icons.Powder.State = boolTier(s.Powder == 2)
 	icons.Mushroom.State = boolTier(s.Powder == 1)
 	icons.FireRod.State = boolTier(s.FireRod)

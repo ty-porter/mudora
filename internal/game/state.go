@@ -4,6 +4,7 @@ type State struct {
 	Bow       byte // 0 = none, 1 = Bow, 3 = Silvers
 	Boomerang byte // 0 = none, 1 = blue, 2 = red
 	Hookshot  bool
+	Bombs     bool
 	FireRod   bool
 	IceRod    bool
 	Bombos    bool

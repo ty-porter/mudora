@@ -13,6 +13,7 @@ func ParseSaveData(data []byte) (State, error) {
 		Bow:       data[OffBow],
 		Boomerang: data[OffBoomerang],
 		Hookshot:  data[OffHookshot] != 0,
+		Bombs:     data[OffBombs] != 0,
 		FireRod:   data[OffFireRod] != 0,
 		IceRod:    data[OffIceRod] != 0,
 		Bombos:    data[OffBombos] != 0,
