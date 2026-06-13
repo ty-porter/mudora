@@ -1,0 +1,891 @@
+[
+    //Light World
+    {
+        "name": "Master Sword Pedestal",
+        "short_name": "Pedestal",
+        "parent": "OW Lost Woods West",
+        "sections": [
+            {
+                "name": "Pedestal",
+                "access_rules": [
+                    "greenpendant,pendant:2",
+                    "prize:10",
+                    "{book}"
+                ],
+                "capture_item": true,
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 83,
+                "y": 50,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 83,
+                "y": 53,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Mushroom Spot",
+        "parent": "OW Lost Woods East",
+        "sections": [
+            {
+                "name": "Shroom",
+                "access_rules": [
+                    "world_state_open",
+                    "world_state_inverted,pearl",
+                    "{world_state_inverted}"
+                ],
+                "capture_item": true,
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 250,
+                "y": 180,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 250,
+                "y": 180,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Bottle Vendor",
+        "parent": "OW Kakariko Village",
+        "sections": [
+            {
+                "name": "This Jerk",
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 186,
+                "y": 940,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 186,
+                "y": 933,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Weathervane",
+        "parent": "OW Kakariko Village",
+        "access_rules": [
+            "world_state_open,@OW Kakariko Village,flute",
+            "@OW Kakariko Village,pearl,flute"
+        ],
+        "sections": [
+            {
+                "name": "Activate Flute",
+                "chest_unopened_img": "images/0047.png",
+                "chest_opened_img": "images/0047.png",
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 256,
+                "y": 964,
+                "size": 48,
+                "restrict_visibility_rules": [ "flute" ],
+                "force_invisibility_rules": [ "activated_flute" ]
+            }
+        ]
+    },
+    {
+        "name": "Tavern",
+        "parent": "OW Kakariko Village",
+        "access_rules": [
+            "world_state_open",
+            "world_state_inverted,pearl",
+            "world_state_inverted,[pearl],mirror"
+        ],
+        "sections": [
+            {
+                "name": "Back Room",
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 322,
+                "y": 1145,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 322,
+                "y": 1142,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Race Game",
+        "parent": "OW Race Game Tease",
+        "access_rules": [
+            "world_state_open",
+            "world_state_inverted,pearl",
+            "glitch_mode_major",
+            "{}"
+        ],
+        "sections": [
+            {
+                "name": "Take This Trash",
+                "access_rules": [
+                    "@OW Race Game",
+                    "glitch_mode_ow,boots",
+                    "glitch_mode_major",
+                    "{}"
+                ],
+                "capture_item": true,
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 80,
+                "y": 1380,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 80,
+                "y": 1386,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Grove Digging Spot",
+        "short_name": "Dig Spot",
+        "parent": "OW Flute Boy",
+        "access_rules": [
+            "world_state_open",
+            "world_state_inverted,pearl"
+        ],
+        "sections": [
+            {
+                "name": "Hidden Treasure",
+                "access_rules": [ "shovel" ],
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 600,
+                "y": 1350,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 585,
+                "y": 1320,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Desert Ledge",
+        "parent": "OW Desert",
+        "sections": [
+            {
+                "name": "Ledge",
+                "access_rules": [
+                    "@OW Desert Ledge",
+                    "{}"
+                ],
+                "capture_item": true,
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 40,
+                "y": 1835,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 40,
+                "y": 1835,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Bombos Tablet",
+        "parent": "OW Desert Tablet",
+        "sections": [
+            {
+                "name": "Tablet",
+                "access_rules": [
+                    "book,$canActivateTablets",
+                    "{book}"
+                ],
+                "capture_item": true,
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 448,
+                "y": 1852,
+                "restrict_visibility_rules": [ "ow_shuffle_off,entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 448,
+                "y": 1808,
+                "restrict_visibility_rules": [ "ow_shuffle_on,entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 448,
+                "y": 1852,
+                "size": 64,
+                "restrict_visibility_rules": [ "ow_shuffle_off,entrance_shuffle_all" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 448,
+                "y": 1820,
+                "size": 64,
+                "restrict_visibility_rules": [ "ow_shuffle_on,entrance_shuffle_all" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 540,
+                "y": 1885,
+                "size": 48,
+                "restrict_visibility_rules": [ "ow_shuffle_off,glitch_mode_none,world_state_open" ]
+            }
+        ]
+    },
+    {
+        "name": "Sunken Treasure",
+        "parent": "OW Dam",
+        "access_rules": [ "dam" ],
+        "sections": [
+            {
+                "name": "Drain The Dam",
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 880,
+                "y": 1860,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Lake Hylia Island",
+        "parent": "OW Lake Hylia Water",
+        "sections": [
+            {
+                "name": "Island",
+                "access_rules": [
+                    "world_state_open,@OW Ice Lake Water,pearl,flippers,mirror",
+                    "world_state_open,@OW Ice Lake Water,pearl,boots,[flippers],mirror",
+                    "world_state_open,glitch_mode_ow,boots",
+                    "world_state_inverted,@OW Lake Hylia Water,pearl,[flippers]",
+                    "world_state_inverted,glitch_mode_ow,pearl,boots",
+                    "glitch_mode_major",
+                    "{world_state_open}",
+                    "{world_state_inverted,@OW Lake Hylia Northeast}",
+                    "{world_state_inverted,@OW Lake Hylia Water}"
+                ],
+                "capture_item": true,
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 1450,
+                "y": 1666,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 1450,
+                "y": 1676,
+                "size": 48,
+                "restrict_visibility_rules": [ "ow_shuffle_off,glitch_mode_none,world_state_open" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 1450,
+                "y": 1666,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Hobo",
+        "parent": "OW Stone Bridge Water",
+        "access_rules": [
+            "world_state_open",
+            "world_state_inverted,pearl"
+        ],
+        "sections": [
+            {
+                "name": "Under The Bridge",
+                "access_rules": [
+                    "[flippers]",
+                    "glitch_mode_ow,boots"
+                ],
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 1390,
+                "y": 1394,
+                "restrict_visibility_rules": [ "ow_shuffle_off,entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 1375,
+                "y": 1394,
+                "restrict_visibility_rules": [ "ow_shuffle_on,entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 1390,
+                "y": 1390,
+                "size": 64,
+                "restrict_visibility_rules": [ "ow_shuffle_off,entrance_shuffle_all" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 1382,
+                "y": 1390,
+                "size": 64,
+                "restrict_visibility_rules": [ "ow_shuffle_on,entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Ether Tablet",
+        "parent": "OW Death Mountain West Top",
+        "sections": [
+            {
+                "name": "Tablet",
+                "access_rules": [
+                    "book,$canActivateTablets",
+                    "{book}"
+                ],
+                "capture_item": true,
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 844,
+                "y": 38,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 844,
+                "y": 38,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Spectacle Rock",
+        "parent": "OW Death Mountain West Bottom",
+        "sections": [
+            {
+                "name": "Cave",
+                "visibility_rules": [ "entrance_shuffle_singleentryvanilla" ],
+                "item_count": 1
+            },
+            {
+                "name": "Up On Top",
+                "access_rules": [
+                    "world_state_open,mirror",
+                    "world_state_open,glitch_mode_ow,boots",
+                    "world_state_inverted,@OW Death Mountain West Top",
+                    "world_state_inverted,glitch_mode_ow,pearl,boots",
+                    "glitch_mode_major",
+                    "{}"
+                ],
+                "capture_item": true,
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 980,
+                "y": 198,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 1034,
+                "y": 160,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Floating Island",
+        "parent": "OW Death Mountain East Top",
+        "sections": [
+            {
+                "name": "Island",
+                "access_rules": [
+                    "world_state_open,@OW Dark Death Mountain East Top,entrance_shuffle_singleentryvanilla,mirror",
+                    "world_state_open,ddm_floating,mirror",
+                    "world_state_open,glitch_mode_ow,boots",
+                    "world_state_open,glitch_mode_major",
+                    "world_state_inverted",
+                    "{}"
+                ],
+                "capture_item": true,
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 1627,
+                "y": 40,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 1627,
+                "y": 40,
+                "size": 48,
+                "restrict_visibility_rules": [ "ow_shuffle_off,entrance_shuffle_singleentryvanilla,world_state_open,glitch_mode_none" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 1627,
+                "y": 40,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Zora's Domain",
+        "parent": "OW Zora Approach",
+        "sections": [
+            {
+                "name": "King Zora",
+                "item_count": 1
+            },
+            {
+                "name": "Ledge",
+                "access_rules": [
+                    "flippers",
+                    "[flippers],bow",
+                    "world_state_open,glitch_mode_ow,boots",
+                    "world_state_inverted,glitch_mode_ow,pearl,boots",
+                    "glitch_mode_major",
+                    "{}"
+                ],
+                "capture_item": true,
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 1920,
+                "y": 243,
+                "restrict_visibility_rules": [ "ow_shuffle_off,entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 1924,
+                "y": 213,
+                "restrict_visibility_rules": [ "ow_shuffle_on,entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 1920,
+                "y": 243,
+                "size": 64,
+                "restrict_visibility_rules": [ "ow_shuffle_off,entrance_shuffle_all" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 1924,
+                "y": 223,
+                "size": 64,
+                "restrict_visibility_rules": [ "ow_shuffle_on,entrance_shuffle_all" ]
+            }
+        ]
+    },
+    //Dark World
+    {
+        "name": "Dwarven Smiths",
+        "short_name": "Smiths",
+        "parent": "OW Frog",
+        "sections": [
+            {
+                "name": "Bring Him Home",
+                "access_rules": [
+                    "world_state_open,pearl,lift2,@OW Blacksmith",
+                    "world_state_open,entrance_shuffle_all,pearl,lift2",
+                    "world_state_open,glitch_mode_ow,pearl,boots,bottle,[lift2]",
+                    "world_state_open,glitch_mode_ow,pearl,boots,mirror,[lift2]",
+                    "world_state_open,glitch_mode_ow,[pearl],bottle2,boots,[lift2]",
+                    "world_state_open,glitch_mode_ow,[pearl],bottle,boots,mirror,[lift2]",
+                    "world_state_open,glitch_mode_major,bottle",
+                    "world_state_open,glitch_mode_major,mirror",
+                    "world_state_inverted,entrance_shuffle_all,@OW Kakariko Suburb,mirror",
+                    "world_state_inverted,entrance_shuffle_all,lift2",
+                    "world_state_inverted,@OW Kakariko Suburb,mirror,@OW Blacksmith",
+                    "world_state_inverted,lift2,@OW Blacksmith",
+                    "world_state_inverted,glitch_mode_ow,boots,bottle,[lift2]",
+                    "world_state_inverted,glitch_mode_ow,boots,mirror,[lift2]",
+                    "world_state_inverted,glitch_mode_major,bottle",
+                    "world_state_inverted,glitch_mode_major,mirror"
+                ],
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 616,
+                "y": 1054,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 295,
+                "y": 1325,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 295,
+                "y": 1325,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Purple Chest",
+        "parent": "Dark World Color",
+        "access_rules": [
+            "@Hammer Pegs Area,@OW Desert Pass",
+            "world_state_open,@OW Hammer Pegs Entry,pearl,lift2",
+            "world_state_inverted,@OW Hammer Pegs Entry,lift2",
+            "world_state_inverted,@OW Blacksmith,mirror"
+        ],
+        "sections": [
+            {
+                "name": "Middle-Aged Man",
+                "access_rules": [
+                    "@Dwarven Smiths/Bring Him Home,@OW Desert Pass",
+                    "world_state_open,glitch_mode_ow,@Dwarven Smiths/Bring Him Home,[pearl],[lift2]",
+                    "world_state_open,glitch_mode_major,@Dwarven Smiths/Bring Him Home,pearl",
+                    "world_state_inverted,glitch_mode_ow,@Dwarven Smiths/Bring Him Home,[mirror]",
+                    "world_state_inverted,glitch_mode_ow,@Dwarven Smiths/Bring Him Home,[lift2]",
+                    "world_state_inverted,glitch_mode_major,@Dwarven Smiths/Bring Him Home"
+                ],
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "lightworld",
+                "x": 680,
+                "y": 1805,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 601,
+                "y": 1050,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 680,
+                "y": 1805,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 601,
+                "y": 1050,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Digging Game",
+        "parent": "OW Dig Game",
+        "access_rules": [
+            "world_state_open,pearl",
+            "world_state_inverted",
+            "glitch_mode_ow,[pearl],bottle"
+        ],
+        "sections": [
+            {
+                "name": "Dig For Treasure",
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "darkworld",
+                "x": 100,
+                "y": 1385,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 100,
+                "y": 1385,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Stumpy",
+        "parent": "OW Stumpy",
+        "access_rules": [
+            "world_state_open,pearl",
+            "world_state_inverted",
+            "glitch_mode_ow,[pearl],bottle",
+            "glitch_mode_ow,[pearl],mirror"
+        ],
+        "sections": [
+            {
+                "name": "Farewell",
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "darkworld",
+                "x": 622,
+                "y": 1383,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 622,
+                "y": 1383,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Ganon Sign",
+        "parent": "Dark World Color",
+        "access_rules": [
+            "world_state_open,@OW Pyramid",
+            "world_state_inverted,@OW Castle Ledge"
+        ],
+        "sections": [
+            {
+                "name": "Sign",
+                "chest_unopened_img": "images/ganon_crystals.png",
+                "chest_opened_img": "images/ganon_crystals.png",
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "darkworld",
+                "x": 940,
+                "y": 880,
+                "size": 48,
+                "restrict_visibility_rules": [ "world_state_open,$ganonCrystalUnknown" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 1082,
+                "y": 823,
+                "size": 48,
+                "restrict_visibility_rules": [ "world_state_inverted,$ganonCrystalUnknown" ]
+            }
+        ]
+    },
+    {
+        "name": "Pyramid Ledge",
+        "parent": "OW Pyramid",
+        "sections": [
+            {
+                "name": "Ledge",
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "darkworld",
+                "x": 1164,
+                "y": 922,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 1164,
+                "y": 922,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Bumper Ledge",
+        "parent": "OW Bumper Cave",
+        "sections": [
+            {
+                "name": "Ledge",
+                "access_rules": [
+                    "world_state_open,entrance_shuffle_singleentryvanilla,pearl,lift1,cape",
+                    "world_state_open,bumper_cave",
+                    "world_state_open,glitch_mode_ow,pearl,boots",
+                    "world_state_open,glitch_mode_ow,[pearl],bottle,boots",
+                    "world_state_open,glitch_mode_ow,[pearl],bottle,cape",
+                    "world_state_inverted,entrance_shuffle_singleentryvanilla,@OW Mountain Entry,pearl,lift1,cape,mirror",
+                    "world_state_inverted,bumper_cave,mirror",
+                    "world_state_inverted,glitch_mode_ow,boots",
+                    "glitch_mode_major",
+                    "{}"
+                ],
+                "capture_item": true,
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "darkworld",
+                "x": 669,
+                "y": 315,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 669,
+                "y": 315,
+                "size": 48,
+                "restrict_visibility_rules": [ "ow_shuffle_off,glitch_mode_none,entrance_shuffle_singleentryvanilla,world_state_inverted" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 669,
+                "y": 315,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Catfish",
+        "parent": "OW Catfish",
+        "sections": [
+            {
+                "name": "Ring of Stones",
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "darkworld",
+                "x": 1820,
+                "y": 347,
+                "restrict_visibility_rules": [ "entrance_shuffle_singleentryvanilla" ]
+            },
+            {
+                "map": "darkworld",
+                "x": 1813,
+                "y": 347,
+                "size": 64,
+                "restrict_visibility_rules": [ "entrance_shuffle_all" ]
+            }
+        ]
+    },
+    {
+        "name": "Ganon's Tower Sign",
+        "short_name": "GT Sign",
+        "parent": "Dark Death Mountain Color",
+        "access_rules": [
+            "world_state_open,@OW Dark Death Mountain West Top",
+            "world_state_inverted,@OW Castle Ledge"
+        ],
+        "sections": [
+            {
+                "name": "Sign",
+                "chest_unopened_img": "images/GTSign.png",
+                "chest_opened_img": "images/GTSign.png",
+                "item_count": 1
+            }
+        ],
+        "map_locations": [
+            {
+                "map": "darkworld",
+                "x": 1046,
+                "y": 89,
+                "size": 48,
+                "restrict_visibility_rules": [ "world_state_open,$gtCrystalUnknown" ]
+            },
+            {
+                "map": "lightworld",
+                "x": 924,
+                "y": 823,
+                "size": 48,
+                "restrict_visibility_rules": [ "world_state_inverted,$gtCrystalUnknown" ]
+            }
+        ]
+    }
+]

@@ -31,8 +31,9 @@ type State struct {
 	MagicUse  byte    // 0 = normal, 1 = 1/2, 2 = 1/4
 
 	// Progression.
-	Pendants byte // bitmask
-	Crystals byte // bitmask
+	Pendants        byte // bitmask
+	Crystals        byte // bitmask
+	AgahnimDefeated bool // Agahnim 1 beaten (opens the Dark World)
 }
 
 // InGame reports whether the given game module value represents actual

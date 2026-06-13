@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/ty-porter/mudora/internal/game"
+	"github.com/ty-porter/mudora/internal/logic"
 	"github.com/ty-porter/mudora/internal/ui/icons"
 	. "modernc.org/tk9.0"
 	_ "modernc.org/tk9.0/themes/azure"
@@ -33,6 +34,8 @@ type TrackerWindow struct {
 
 	ctx         context.Context
 	items       *ItemGrid
+	maps        *WorldMaps
+	world       *logic.World
 	statusLabel *TLabelWidget
 }
 
@@ -78,6 +81,7 @@ func (w *TrackerWindow) drain() {
 	if pending != nil {
 		applyState(*pending)
 		w.items.RefreshAll()
+		w.updateMarkers(*pending)
 	}
 	if statusNew {
 		w.statusLabel.Configure(Txt(truncateMiddle(status, statusWidth)))
@@ -114,7 +118,13 @@ func (w *TrackerWindow) Run(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
+	world, err := logic.New(logic.DefaultSettings())
+	if err != nil {
+		return err
+	}
 	w.items = items
+	w.maps = worldMaps
+	w.world = world
 	// Width pins the label's requested size so overflow is clipped, not grown
 	// into; truncateMiddle keeps the displayed text within that same budget.
 	w.statusLabel = TLabel(Txt("starting…"), Width(statusWidth))
@@ -141,11 +151,29 @@ func (w *TrackerWindow) Run(ctx context.Context) error {
 	GridColumnConfigure(App, 0, Weight(1))
 	GridRowConfigure(App, 0, Weight(1))
 
-	// Start draining tracker updates on the Tk event loop, then enter it.
+	// Paint the initial logic markers (no items yet), then start draining
+	// tracker updates on the Tk event loop and enter it.
+	w.updateMarkers(game.State{})
 	TclAfter(uiTick, w.drain)
 	App.Wait()
 
 	return nil
+}
+
+// updateMarkers recomputes the overworld logic markers for the given state and
+// repaints them on the maps. Runs on the Tk goroutine.
+func (w *TrackerWindow) updateMarkers(s game.State) {
+	var light, dark []MapMarker
+	for _, m := range w.world.Markers(s) {
+		mk := MapMarker{U: m.U, V: m.V, Accessible: m.Accessible}
+		switch m.Map {
+		case "lightworld":
+			light = append(light, mk)
+		case "darkworld":
+			dark = append(dark, mk)
+		}
+	}
+	w.maps.SetMarkers(light, dark)
 }
 
 // truncateMiddle shortens s to at most max runes, replacing the excised

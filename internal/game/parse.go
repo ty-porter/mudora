@@ -42,9 +42,10 @@ func ParseSaveData(data []byte) (State, error) {
 			data[OffBottle3],
 			data[OffBottle4],
 		},
-		Pendants: data[OffPendants],
-		Crystals: data[OffCrystals],
-		MagicUse: data[OffMagicUse],
+		Pendants:        data[OffPendants],
+		Crystals:        data[OffCrystals],
+		MagicUse:        data[OffMagicUse],
+		AgahnimDefeated: data[OffProgress] >= 3,
 	}
 
 	// TODO: ALTTPR stores some items progressively / in extended SRAM —

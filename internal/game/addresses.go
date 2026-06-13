@@ -50,6 +50,9 @@ const (
 	OffPendants  = 0x374
 	OffCrystals  = 0x37A
 	OffMagicUse  = 0x37B // 0=normal, 1=1/2, 2=1/4
+	// Game-progress indicator: 0=just started, 1=, 2=, 3+=Agahnim 1 defeated.
+	// (EmoTracker's autotracker reads aga1 as this byte >= 3.)
+	OffProgress = 0x3C5
 	// TODO: compasses/big keys/maps (0x364-0x369), small key counts,
 	// progressive item flags (0x38C-0x38E), ALTTPR-specific extensions, etc.
 )

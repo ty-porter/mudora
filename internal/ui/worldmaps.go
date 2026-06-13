@@ -1,6 +1,9 @@
 package ui
 
 import (
+	"image"
+	"image/color"
+	"image/draw"
 	"strconv"
 	"time"
 
@@ -37,11 +40,22 @@ type WorldMaps struct {
 	darkPhoto  *Img
 	size       int
 
+	// Markers overlaid on each map, in normalized coordinates. Redrawn into
+	// the scaled images on every render.
+	lightMarks, darkMarks []MapMarker
+
 	// Debounce state for interactive resizes. Configure callbacks and the
 	// TclAfter they schedule both run on the Tk event loop, so these need no
 	// locking.
 	pendingAfter   string
 	allocW, allocH int
+}
+
+// MapMarker is a normalized [0,1] position on a map together with whether the
+// location there is currently reachable in logic (which colors it).
+type MapMarker struct {
+	U, V       float64
+	Accessible bool
 }
 
 func NewWorldMaps() (*WorldMaps, error) {
@@ -112,15 +126,31 @@ func (w *WorldMaps) Resize(size int) error {
 	if -resizeStep < d && d < resizeStep {
 		return nil
 	}
+	w.size = size
+	return w.render()
+}
 
-	light, err := maps.LightWorld(size)
+// SetMarkers replaces the overlaid location markers and redraws. Must be
+// called on the Tk event loop.
+func (w *WorldMaps) SetMarkers(light, dark []MapMarker) error {
+	w.lightMarks = light
+	w.darkMarks = dark
+	return w.render()
+}
+
+// render rescales both maps to the current size, paints the markers onto them,
+// and swaps in fresh photos (deleting the old ones so Tk frees them).
+func (w *WorldMaps) render() error {
+	light, err := maps.LightWorld(w.size)
 	if err != nil {
 		return err
 	}
-	dark, err := maps.DarkWorld(size)
+	dark, err := maps.DarkWorld(w.size)
 	if err != nil {
 		return err
 	}
+	drawMarkers(light, w.lightMarks)
+	drawMarkers(dark, w.darkMarks)
 
 	lightPhoto := NewPhoto(Data(light))
 	darkPhoto := NewPhoto(Data(dark))
@@ -132,8 +162,54 @@ func (w *WorldMaps) Resize(size int) error {
 	w.darkPhoto.Delete()
 	w.lightPhoto = lightPhoto
 	w.darkPhoto = darkPhoto
-	w.size = size
 	return nil
+}
+
+var (
+	markerInLogic    = color.NRGBA{R: 30, G: 215, B: 50, A: 255}  // vivid green
+	markerOutOfLogic = color.NRGBA{R: 230, G: 40, B: 40, A: 255}  // vivid red
+	markerBorder     = color.NRGBA{R: 0, G: 0, B: 0, A: 255}      // opaque black
+)
+
+// drawMarkers paints a square per marker onto img, which maps.LightWorld/
+// DarkWorld produce as a mutable *image.NRGBA. Coordinates are normalized, so
+// markers land correctly at any map size.
+func drawMarkers(img image.Image, marks []MapMarker) {
+	dst, ok := img.(draw.Image)
+	if !ok {
+		return
+	}
+	b := img.Bounds()
+	size := b.Dx()
+	// Half-extent and border scale with the map but stay legible when small;
+	// the thick black frame is what makes the colors readable over the map.
+	half := min(max(size/80, 4), 12)
+	border := min(max(size/300, 2), 4)
+	for _, m := range marks {
+		cx := b.Min.X + int(m.U*float64(size))
+		cy := b.Min.Y + int(m.V*float64(size))
+		fill := markerOutOfLogic
+		if m.Accessible {
+			fill = markerInLogic
+		}
+		drawSquare(dst, cx, cy, half, border, fill)
+	}
+}
+
+// drawSquare fills a square of half-extent `half` centered at (cx,cy), framed
+// by a black border `border` pixels thick. dst.Set is bounds-checked, so
+// squares near an edge are simply clipped.
+func drawSquare(dst draw.Image, cx, cy, half, border int, fill color.NRGBA) {
+	for dy := -half; dy <= half; dy++ {
+		for dx := -half; dx <= half; dx++ {
+			edge := min(min(dx+half, half-dx), min(dy+half, half-dy))
+			c := fill
+			if edge < border {
+				c = markerBorder
+			}
+			dst.Set(cx+dx, cy+dy, c)
+		}
+	}
 }
 
 // atoiOr parses s as an int, returning def if it isn't a valid number. Tk
