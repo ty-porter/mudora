@@ -35,8 +35,18 @@ func NewDungeonRewardGrid() (*DungeonRewardGrid, error) {
 		return icons.Captioned(rewardLabels[i], zone, img), nil
 	}
 
-	// Captioned images are uniformly sized; cells size to fit them.
-	g, err := newIconGrid(icons.DungeonRewardCount(), rewardGridColumns, 0, 0, captionedIcon)
+	// A reward's icon is fully determined by its kind and acquired flag (the
+	// caption is fixed per cell), so that pair is the redraw fingerprint.
+	fingerprint := func(i int) any {
+		d, err := icons.DungeonRewardAt(i)
+		if err != nil {
+			return nil
+		}
+		return *d
+	}
+	// Captioned images are uniformly sized; cells size to fit them. Column-major
+	// so each column holds one world's dungeons (light, then dark) top-to-bottom.
+	g, err := newIconGrid(icons.DungeonRewardCount(), rewardGridColumns, 0, 0, true /* column-major */, captionedIcon, fingerprint)
 	if err != nil {
 		return nil, err
 	}

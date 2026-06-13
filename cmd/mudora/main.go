@@ -44,5 +44,5 @@ func main() {
 		}
 	}()
 
-	w.Run()
+	w.Run(ctx)
 }

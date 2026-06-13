@@ -174,49 +174,23 @@ var (
 )
 
 var items = []*GridItem{
-	// Row 1
-	Bow,
-	Boomerang,
-	Hookshot,
-	Bomb,
-	Powder,
-	Mushroom,
-
-	// Row 2
-	FireRod,
-	IceRod,
-	Bombos,
-	Ether,
-	Quake,
-	Shovel,
-
-	// Row 3
-	Lamp,
-	Hammer,
-	Flute,
-	BugNet,
-	Book,
-	HalfMagic,
-
-	// Row 4
-	Bottle,
-	Somaria,
-	Byrna,
-	Cape,
-	Mirror,
-	MoonPearl,
-
-	// Row 5
-	Sword,
-	Shield,
-	Mail,
-	Glove,
-	Boots,
-	Flippers,
+	Bow, Boomerang, Hookshot, Bomb, Powder, Mushroom,
+	FireRod, IceRod, Bombos, Ether, Quake, Shovel,
+	Lamp, Hammer, Flute, BugNet, Book, HalfMagic,
+	Bottle, Somaria, Byrna, Cape, Mirror, MoonPearl,
+	Sword, Shield, Mail, Glove, Boots, Flippers,
 }
 
 // Count is the number of defined item icons.
 func Count() int { return len(items) }
+
+// ItemAt returns the grid item shown in cell id.
+func ItemAt(id int) (*GridItem, error) {
+	if id < 0 || id >= len(items) {
+		return nil, fmt.Errorf("icons: no item %d", id)
+	}
+	return items[id], nil
+}
 
 // Item returns the icon for an item id in its current state. Disabled items
 // (state 0) are grayed out.

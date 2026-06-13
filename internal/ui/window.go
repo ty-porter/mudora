@@ -1,6 +1,7 @@
 package ui
 
 import (
+	"context"
 	"sync"
 	"time"
 
@@ -30,6 +31,7 @@ type TrackerWindow struct {
 	status    string
 	statusNew bool
 
+	ctx         context.Context
 	items       *ItemGrid
 	statusLabel *TLabelWidget
 }
@@ -58,6 +60,14 @@ func (w *TrackerWindow) SetStatus(msg string) {
 // drain runs on the Tk goroutine: it applies any pending state/status, redraws,
 // then re-arms itself. This is the only place tracker data reaches the widgets.
 func (w *TrackerWindow) drain() {
+	// The context is cancelled when the process is interrupted (e.g. Ctrl+C in
+	// the terminal). Tk's event loop won't notice on its own, so tear down the
+	// window here, which unblocks App.Wait and lets the process exit.
+	if w.ctx.Err() != nil {
+		Destroy(App)
+		return
+	}
+
 	w.mu.Lock()
 	pending := w.pending
 	w.pending = nil
@@ -76,7 +86,8 @@ func (w *TrackerWindow) drain() {
 	TclAfter(uiTick, w.drain)
 }
 
-func (w *TrackerWindow) Run() error {
+func (w *TrackerWindow) Run(ctx context.Context) error {
+	w.ctx = ctx
 	if err := ActivateTheme("azure dark"); err != nil {
 		return err
 	}
@@ -109,7 +120,9 @@ func (w *TrackerWindow) Run() error {
 	w.statusLabel = TLabel(Txt("starting…"), Width(statusWidth))
 	// World maps in row 0 spanning all columns, section headers in row 1,
 	// content in row 2, separators spanning headers and content.
-	Grid(worldMaps.Frame(), Row(0), Column(0), Columnspan(5), Pady("4"))
+	// Sticky so the frame fills its cell; its Configure then tracks the window
+	// size and drives the map rescale.
+	Grid(worldMaps.Frame(), Row(0), Column(0), Columnspan(5), Sticky(NEWS), Pady("4"))
 
 	Grid(TLabel(Txt("Notes")), Row(1), Column(0), Sticky(W), Padx("4"), Pady("4"))
 	Grid(TLabel(Txt("Inventory")), Row(1), Column(2), Sticky(W), Padx("4"), Pady("4"))
