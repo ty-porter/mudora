@@ -1,0 +1,211 @@
+0xE96E  Sewers - Dark Cross
+0xE971  Secret Passage
+0xE974  Hyrule Castle - Boomerang Chest
+0xE977  Eastern Palace - Compass Chest
+0xE97A  King's Tomb
+0xE97D  Eastern Palace - Big Chest
+0xE980  Pyramid Fairy - Left
+0xE983  Pyramid Fairy - Right
+0xE986  Swamp Palace - Map Chest
+0xE989  Swamp Palace - Big Chest
+0xE98C  Floodgate Chest
+0xE98F  Desert Palace - Big Chest
+0xE992  Skull Woods - Compass Chest
+0xE995  Ice Palace - Freezor Chest
+0xE998  Skull Woods - Big Chest
+0xE99B  Skull Woods - Map Chest
+0xE99E  Skull Woods - Big Key Chest
+0xE9A1  Skull Woods - Pot Prison
+0xE9A4  Ice Palace - Big Key Chest
+0xE9AA  Ice Palace - Big Chest
+0xE9AD  Tower of Hera - Map Chest
+0xE9B0  Waterfall Fairy - Left
+0xE9B3  Eastern Palace - Cannonball Chest
+0xE9B6  Desert Palace - Map Chest
+0xE9B9  Eastern Palace - Big Key Chest
+0xE9BC  Link's House
+0xE9BF  Spiral Cave
+0xE9C2  Desert Palace - Big Key Chest
+0xE9C5  Mimic Cave
+0xE9C8  Skull Woods - Pinball Room
+0xE9CB  Desert Palace - Compass Chest
+0xE9CE  Kakariko Tavern
+0xE9D1  Waterfall Fairy - Right
+0xE9D4  Ice Palace - Compass Chest
+0xE9DA  Misery Mire - Spike Chest
+0xE9DD  Ice Palace - Map Chest
+0xE9E0  Ice Palace - Spike Room
+0xE9E3  Ice Palace - Iced T Room
+0xE9E6  Tower of Hera - Big Key Chest
+0xE9E9  Chicken House
+0xE9EC  Brewery
+0xE9EF  C-Shaped House
+0xE9F2  Aginah's Cave
+0xE9F5  Eastern Palace - Map Chest
+0xE9F8  Tower of Hera - Big Chest
+0xE9FB  Tower of Hera - Compass Chest
+0xE9FE  Skull Woods - Bridge Room
+0xEA01  Thieves' Town - Map Chest
+0xEA04  Thieves' Town - Big Key Chest
+0xEA07  Thieves' Town - Compass Chest
+0xEA0A  Thieves' Town - Ambush Chest
+0xEA0D  Thieves' Town - Attic
+0xEA10  Thieves' Town - Big Chest
+0xEA13  Thieves' Town - Blind's Cell
+0xEA16  Turtle Rock - Chain Chomps
+0xEA19  Turtle Rock - Big Chest
+0xEA1C  Turtle Rock - Roller Room - Left
+0xEA1F  Turtle Rock - Roller Room - Right
+0xEA22  Turtle Rock - Compass Chest
+0xEA25  Turtle Rock - Big Key Chest
+0xEA28  Turtle Rock - Eye Bridge - Top Right
+0xEA2B  Turtle Rock - Eye Bridge - Top Left
+0xEA2E  Turtle Rock - Eye Bridge - Bottom Right
+0xEA31  Turtle Rock - Eye Bridge - Bottom Left
+0xEA34  Turtle Rock - Crystaroller Room
+0xEA37  Palace of Darkness - Big Key Chest
+0xEA3A  Palace of Darkness - The Arena - Ledge
+0xEA3D  Palace of Darkness - The Arena - Bridge
+0xEA40  Palace of Darkness - Big Chest
+0xEA43  Palace of Darkness - Compass Chest
+0xEA46  Palace of Darkness - Harmless Hellway
+0xEA49  Palace of Darkness - Stalfos Basement
+0xEA4C  Palace of Darkness - Dark Basement - Left
+0xEA4F  Palace of Darkness - Dark Basement - Right
+0xEA52  Palace of Darkness - Map Chest
+0xEA55  Palace of Darkness - Dark Maze - Top
+0xEA58  Palace of Darkness - Dark Maze - Bottom
+0xEA5B  Palace of Darkness - Shooter Room
+0xEA5E  Misery Mire - Main Lobby
+0xEA61  Misery Mire - Bridge Chest
+0xEA64  Misery Mire - Compass Chest
+0xEA67  Misery Mire - Big Chest
+0xEA6A  Misery Mire - Map Chest
+0xEA6D  Misery Mire - Big Key Chest
+0xEA73  Mire Shed - Left
+0xEA76  Mire Shed - Right
+0xEA79  Sanctuary
+0xEA7C  Superbunny Cave - Top
+0xEA7F  Superbunny Cave - Bottom
+0xEA82  Sahasrahla's Hut - Left
+0xEA85  Sahasrahla's Hut - Middle
+0xEA88  Sahasrahla's Hut - Right
+0xEA8B  Spike Cave
+0xEA8E  Kakariko Well - Top
+0xEA91  Kakariko Well - Left
+0xEA94  Kakariko Well - Middle
+0xEA97  Kakariko Well - Right
+0xEA9A  Kakariko Well - Bottom
+0xEA9D  Swamp Palace - Entrance
+0xEAA0  Swamp Palace - Compass Chest
+0xEAA3  Swamp Palace - West Chest
+0xEAA6  Swamp Palace - Big Key Chest
+0xEAA9  Swamp Palace - Flooded Room - Left
+0xEAAC  Swamp Palace - Flooded Room - Right
+0xEAAF  Swamp Palace - Waterfall Room
+0xEAB2  Castle Tower - Dark Maze
+0xEAB5  Castle Tower - Room 03
+0xEAB8  Ganon's Tower - DMs Room - Top Left
+0xEABB  Ganon's Tower - DMs Room - Top Right
+0xEABE  Ganon's Tower - DMs Room - Bottom Left
+0xEAC1  Ganon's Tower - DMs Room - Bottom Right
+0xEAC4  Ganon's Tower - Randomizer Room - Top Left
+0xEAC7  Ganon's Tower - Randomizer Room - Top Right
+0xEACA  Ganon's Tower - Randomizer Room - Bottom Left
+0xEACD  Ganon's Tower - Randomizer Room - Bottom Right
+0xEAD0  Ganon's Tower - Firesnake Room
+0xEAD3  Ganon's Tower - Map Chest
+0xEAD6  Ganon's Tower - Big Chest
+0xEAD9  Ganon's Tower - Hope Room - Left
+0xEADC  Ganon's Tower - Hope Room - Right
+0xEADF  Ganon's Tower - Bob's Chest
+0xEAE2  Ganon's Tower - Tile Room
+0xEAE5  Ganon's Tower - Compass Room - Top Left
+0xEAE8  Ganon's Tower - Compass Room - Top Right
+0xEAEB  Ganon's Tower - Compass Room - Bottom Left
+0xEAEE  Ganon's Tower - Compass Room - Bottom Right
+0xEAF1  Ganon's Tower - Big Key Chest
+0xEAF4  Ganon's Tower - Big Key Room - Left
+0xEAF7  Ganon's Tower - Big Key Room - Right
+0xEAFD  Ganon's Tower - Mini Helmasaur Room - Left
+0xEB00  Ganon's Tower - Mini Helmasaur Room - Right
+0xEB03  Ganon's Tower - Pre-Moldorm Chest
+0xEB06  Ganon's Tower - Moldorm Chest
+0xEB09  Hyrule Castle - Zelda's Cell
+0xEB0C  Hyrule Castle - Map Chest
+0xEB0F  Blind's Hideout - Top
+0xEB12  Blind's Hideout - Left
+0xEB15  Blind's Hideout - Right
+0xEB18  Blind's Hideout - Far Left
+0xEB1B  Blind's Hideout - Far Right
+0xEB1E  Hype Cave - Top
+0xEB21  Hype Cave - Middle Right
+0xEB24  Hype Cave - Middle Left
+0xEB27  Hype Cave - Bottom
+0xEB2A  Paradox Cave Lower - Far Left
+0xEB2D  Paradox Cave Lower - Left
+0xEB30  Paradox Cave Lower - Right
+0xEB33  Paradox Cave Lower - Far Right
+0xEB36  Paradox Cave Lower - Middle
+0xEB39  Paradox Cave Upper - Left
+0xEB3C  Paradox Cave Upper - Right
+0xEB3F  Pegasus Rocks
+0xEB42  Mini Moldorm Cave - Far Left
+0xEB45  Mini Moldorm Cave - Left
+0xEB48  Mini Moldorm Cave - Right
+0xEB4B  Mini Moldorm Cave - Far Right
+0xEB4E  Ice Rod Cave
+0xEB51  Hookshot Cave - Top Right
+0xEB54  Hookshot Cave - Top Left
+0xEB57  Hookshot Cave - Bottom Left
+0xEB5A  Hookshot Cave - Bottom Right
+0xEB5D  Sewers - Secret Room - Left
+0xEB60  Sewers - Secret Room - Middle
+0xEB63  Sewers - Secret Room - Right
+0xEDA8  Chest Game
+0x180000  Lost Woods Hideout
+0x180001  Lumberjack Tree
+0x180002  Spectacle Rock Cave
+0x180003  Cave 45
+0x180004  Graveyard Ledge
+0x180005  Checkerboard Cave
+0x180006  Hammer Pegs
+0x180010  Mini Moldorm Cave - NPC
+0x180011  Hype Cave - NPC
+0x180012  Library
+0x180013  Mushroom
+0x180015  Magic Bat
+0x180028  Pyramid Fairy - Sword
+0x180140  Spectacle Rock
+0x180141  Floating Island
+0x180142  Maze Race
+0x180143  Desert Ledge
+0x180144  Lake Hylia Island
+0x180145  Sunken Treasure
+0x180146  Bumper Cave
+0x180147  Pyramid
+0x180148  Digging Game
+0x180149  Zora's Ledge
+0x180150  Eastern Palace - Boss
+0x180151  Desert Palace - Boss
+0x180152  Tower of Hera - Boss
+0x180153  Palace of Darkness - Boss
+0x180154  Swamp Palace - Boss
+0x180155  Skull Woods - Boss
+0x180156  Thieves' Town - Boss
+0x180157  Ice Palace - Boss
+0x180158  Misery Mire - Boss
+0x180159  Turtle Rock - Boss
+0x180160  Desert Palace - Torch
+0x180161  Ganon's Tower - Bob's Torch
+0x289B0  Master Sword Pedestal
+0x2EB18  Bottle Merchant
+0x2F1FC  Sahasrahla
+0x330C7  Stumpy
+0x33D68  Purple Chest
+0x33E7D  Hobo
+0x348FF  Waterfall Bottle
+0x34914  Pyramid Fairy - Bow
+0x3493B  Pyramid Bottle
+0xEE185  Catfish
+0xF69FA  Old Man

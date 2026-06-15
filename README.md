@@ -1,6 +1,6 @@
 # mudora
 
-A minimal ALttP(R) tracker.
+A minimal ALttP ROM inspector.
 
 # Contact
 
