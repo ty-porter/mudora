@@ -101,14 +101,9 @@ func (l *regionList) load(path string) {
 		return
 	}
 
-	itemByLoc := make(map[string]string)
-	for _, e := range rom.Inspect(data) {
-		itemByLoc[e.Location] = e.Item
-	}
-
 	l.clear()
-	for _, region := range alttp.RegionOrder {
-		l.addRegion(region, alttp.Regions[region], itemByLoc)
+	for _, g := range alttp.Grouped(rom.Inspect(data)) {
+		l.addRegion(g)
 	}
 	App.WmTitle(windowTitle + " (inspecting " + path + ")")
 }
@@ -121,8 +116,8 @@ func (l *regionList) clear() {
 	l.row = 0
 }
 
-func (l *regionList) addRegion(name string, locs []string, itemByLoc map[string]string) {
-	sec := &regionSection{name: name, expanded: true}
+func (l *regionList) addRegion(g alttp.Group) {
+	sec := &regionSection{name: g.Region, expanded: true}
 
 	box := l.inner.Frame(Background(sectionBg), Relief("solid"), Borderwidth(1), Padx(6), Pady(4))
 	l.created = append(l.created, box.Window)
@@ -132,12 +127,11 @@ func (l *regionList) addRegion(name string, locs []string, itemByLoc map[string]
 	hdr := box.Frame(Background(sectionBg))
 	Grid(hdr, Row(0), Column(0), Columnspan(3), Sticky("we"))
 
-	sec.toggle = hdr.Label(Txt("▾  "+name), Background(sectionBg), Foreground(sectionFg), Width(regionNameWidth), Anchor("w"))
+	sec.toggle = hdr.Label(Txt("▾  "+g.Region), Background(sectionBg), Foreground(sectionFg), Width(regionNameWidth), Anchor("w"))
 	Pack(sec.toggle, Side("left"))
-	for _, loc := range locs {
-		item := itemByLoc[loc]
-		if alttp.IsProgression(item) {
-			if img := iconFor(item); img != nil {
+	for _, p := range g.Locations {
+		if alttp.IsProgression(p.Item) {
+			if img := iconFor(p.Item); img != nil {
 				Pack(hdr.Label(Image(img), Background(sectionBg)), Side("left"), Padx(1))
 			}
 		}
@@ -145,16 +139,15 @@ func (l *regionList) addRegion(name string, locs []string, itemByLoc map[string]
 	Bind(hdr, "<Button-1>", Command(func() { l.toggle(sec) }))
 	Bind(sec.toggle, "<Button-1>", Command(func() { l.toggle(sec) }))
 
-	for i, loc := range locs {
-		item := itemByLoc[loc]
+	for i, p := range g.Locations {
 		r := i + 1
 
-		locLbl := box.Label(Txt(loc), Background(sectionBg), Foreground(sectionFg), Anchor("w"))
+		locLbl := box.Label(Txt(p.Location), Background(sectionBg), Foreground(sectionFg), Anchor("w"))
 		iconLbl := box.Label(Background(sectionBg))
-		if img := iconFor(item); img != nil {
+		if img := iconFor(p.Item); img != nil {
 			iconLbl.Configure(Image(img))
 		}
-		itemLbl := box.Label(Txt(item), Background(sectionBg), Foreground(sectionFg), Anchor("w"))
+		itemLbl := box.Label(Txt(p.Item), Background(sectionBg), Foreground(sectionFg), Anchor("w"))
 
 		Grid(locLbl, Row(r), Column(0), Sticky("w"), Padx("48 0"))
 		Grid(iconLbl, Row(r), Column(1), Padx(6))
