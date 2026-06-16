@@ -175,7 +175,8 @@
 0x180012  Library
 0x180013  Mushroom
 0x180015  Magic Bat
-0x180028  Pyramid Fairy - Sword
+0x180016  Ether Tablet
+0x180017  Bombos Tablet
 0x180140  Spectacle Rock
 0x180141  Floating Island
 0x180142  Maze Race
@@ -205,7 +206,6 @@
 0x33D68  Purple Chest
 0x33E7D  Hobo
 0x348FF  Waterfall Bottle
-0x34914  Pyramid Fairy - Bow
 0x3493B  Pyramid Bottle
 0xEE185  Catfish
 0xF69FA  Old Man

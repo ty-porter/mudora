@@ -41,6 +41,8 @@ func main() {
 type regionList struct {
 	canvas  *CanvasWidget
 	inner   *FrameWidget
+	search  *TEntryWidget
+	groups  []alttp.Group
 	row     int
 	created []*Window
 }
@@ -63,8 +65,14 @@ func buildUI() *regionList {
 
 	l := &regionList{canvas: cv, inner: inner}
 
-	open := TButton(Txt("Open ROM..."), Command(func() { chooseAndLoad(l) }))
-	Pack(open, Side("top"), Anchor("w"), Padx("2m"), Pady("2m"))
+	bar := fr.TFrame()
+	Pack(bar, Side("top"), Fill("x"), Padx("2m"), Pady("2m"))
+	open := bar.TButton(Txt("Open ROM..."), Command(func() { chooseAndLoad(l) }))
+	Pack(open, Side("left"))
+	l.search = bar.TEntry(Width(30), Textvariable(""))
+	Pack(l.search, Side("right"))
+	Pack(bar.TLabel(Txt("Search item: ")), Side("right"))
+	Bind(l.search, "<KeyRelease>", Command(func() { l.render(l.search.Textvariable()) }))
 
 	Pack(sb, Side("right"), Fill("y"))
 	Pack(cv, Side("left"), Expand(true), Fill("both"))
@@ -101,11 +109,17 @@ func (l *regionList) load(path string) {
 		return
 	}
 
-	l.clear()
-	for _, g := range alttp.Grouped(rom.Inspect(data)) {
-		l.addRegion(g)
-	}
+	l.groups = alttp.Grouped(rom.Inspect(data))
+	l.render(l.search.Textvariable())
 	App.WmTitle(windowTitle + " (inspecting " + path + ")")
+}
+
+func (l *regionList) render(query string) {
+	l.clear()
+	collapsed := strings.TrimSpace(query) == ""
+	for _, g := range alttp.Filter(l.groups, query) {
+		l.addRegion(g, collapsed)
+	}
 }
 
 func (l *regionList) clear() {
@@ -116,7 +130,7 @@ func (l *regionList) clear() {
 	l.row = 0
 }
 
-func (l *regionList) addRegion(g alttp.Group) {
+func (l *regionList) addRegion(g alttp.Group, collapsed bool) {
 	sec := &regionSection{name: g.Region, expanded: true}
 
 	box := l.inner.Frame(Background(sectionBg), Relief("solid"), Borderwidth(1), Padx(6), Pady(4))
@@ -157,7 +171,9 @@ func (l *regionList) addRegion(g alttp.Group) {
 		sec.rowIndex = append(sec.rowIndex, r)
 	}
 
-	l.toggle(sec)
+	if collapsed {
+		l.toggle(sec)
+	}
 }
 
 func (l *regionList) toggle(sec *regionSection) {

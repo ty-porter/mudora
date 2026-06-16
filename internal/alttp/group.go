@@ -1,6 +1,10 @@
 package alttp
 
-import "github.com/ty-porter/mudora/internal/rom"
+import (
+	"strings"
+
+	"github.com/ty-porter/mudora/internal/rom"
+)
 
 type Placement struct {
 	Location string
@@ -27,4 +31,25 @@ func Grouped(entries []rom.Entry) []Group {
 		groups = append(groups, g)
 	}
 	return groups
+}
+
+func Filter(groups []Group, query string) []Group {
+	query = strings.ToLower(strings.TrimSpace(query))
+	if query == "" {
+		return groups
+	}
+
+	var out []Group
+	for _, g := range groups {
+		var matched []Placement
+		for _, p := range g.Locations {
+			if strings.Contains(strings.ToLower(p.Item), query) {
+				matched = append(matched, p)
+			}
+		}
+		if len(matched) > 0 {
+			out = append(out, Group{Region: g.Region, Locations: matched})
+		}
+	}
+	return out
 }
