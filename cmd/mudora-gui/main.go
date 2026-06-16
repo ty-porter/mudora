@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/ty-porter/mudora/internal"
 	"github.com/ty-porter/mudora/internal/alttp"
 	"github.com/ty-porter/mudora/internal/icons"
 	"github.com/ty-porter/mudora/internal/rom"
@@ -18,8 +19,10 @@ const (
 	surround  = "#2b2b2b"
 )
 
+var windowTitle string = fmt.Sprintf("Mudora %s - ALttPR ROM Inspector", internal.Version)
+
 func main() {
-	App.WmTitle("Mudora - ALttP ROM Inspector")
+	App.WmTitle(windowTitle)
 
 	list := buildUI()
 
@@ -107,7 +110,7 @@ func (l *regionList) load(path string) {
 	for _, region := range alttp.RegionOrder {
 		l.addRegion(region, alttp.Regions[region], itemByLoc)
 	}
-	App.WmTitle("Mudora (inspecting " + path + ")")
+	App.WmTitle(windowTitle + " (inspecting " + path + ")")
 }
 
 func (l *regionList) clear() {
