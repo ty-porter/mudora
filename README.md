@@ -2,9 +2,9 @@
 
 <div align="center">
   <img src="assets/mudora.png" />
-  <p>The Book of Mudora</p>
+  <h3>The Book of Mudora</h3>
 
-  <p>The monoliths left by the Hylian people are inscribed with ancient script. If you find an inscription you cannot read, use this book and its meaning will become clear.</p>
+  <blockquote>The monoliths left by the Hylian people are inscribed with ancient script. If you find an inscription you cannot read, use this book and its meaning will become clear.</blockquote>
 </div>
 
 mudora is a minimal ALttPR ROM inspection tool. It shows the item locations for a given ROM and can perform item searches if you're stuck.
