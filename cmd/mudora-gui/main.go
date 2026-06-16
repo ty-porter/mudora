@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/exec"
+	"runtime"
 	"strings"
 
 	"github.com/ty-porter/mudora/internal"
@@ -25,6 +27,7 @@ func main() {
 	App.WmTitle(windowTitle)
 
 	list := buildUI()
+	App.Configure(Mnu(buildMenu(list)))
 
 	ActivateTheme("azure dark")
 
@@ -36,6 +39,58 @@ func main() {
 	}
 	WmGeometry(App, "1000x800")
 	App.Wait()
+}
+
+func buildMenu(l *regionList) *MenuWidget {
+	menubar := Menu()
+
+	fileMenu := menubar.Menu()
+	fileMenu.AddCommand(Lbl("Open..."), Underline(0), Accelerator("Ctrl+O"), Command(func() { chooseAndLoad(l) }))
+	fileMenu.AddSeparator()
+	fileMenu.AddCommand(Lbl("Exit"), Underline(1), Accelerator("Ctrl+Q"), Command(func() { Destroy(App) }))
+	menubar.AddCascade(Lbl("File"), Underline(0), Mnu(fileMenu))
+
+	helpMenu := menubar.Menu()
+	helpMenu.AddCommand(Lbl("About..."), Command(showAbout))
+	menubar.AddCascade(Lbl("Help"), Underline(0), Mnu(helpMenu))
+
+	Bind(App, "<Control-o>", Command(func() { chooseAndLoad(l) }))
+	Bind(App, "<Control-q>", Command(func() { Destroy(App) }))
+	return menubar
+}
+
+func showAbout() {
+	const url = "https://github.com/ty-porter/mudora/releases"
+
+	about := Toplevel()
+	about.WmTitle("About Mudora")
+
+	Pack(
+		about.TLabel(Txt(fmt.Sprintf("Mudora %s", internal.Version))),
+		about.TLabel(Txt("ALttPR ROM Inspector")),
+		about.TLabel(Txt("© 2026 Ty Porter")),
+		about.TLabel(Txt("MIT License")),
+		Padx("6m"), Pady("1m"),
+	)
+
+	link := about.TLabel(Txt(url), Foreground("#4ea1ff"), Cursor("hand2"), Font(HELVETICA, 10, UNDERLINE))
+	Pack(link, Padx("6m"), Pady("1m"))
+	Bind(link, "<Button-1>", Command(func() { openURL(url) }))
+
+	Pack(about.TButton(Txt("Close"), Command(func() { Destroy(about) })), Pady("2m"))
+}
+
+func openURL(url string) {
+	var cmd *exec.Cmd
+	switch runtime.GOOS {
+	case "windows":
+		cmd = exec.Command("rundll32", "url.dll,FileProtocolHandler", url)
+	case "darwin":
+		cmd = exec.Command("open", url)
+	default:
+		cmd = exec.Command("xdg-open", url)
+	}
+	_ = cmd.Start()
 }
 
 type regionList struct {
@@ -67,8 +122,11 @@ func buildUI() *regionList {
 
 	bar := fr.TFrame()
 	Pack(bar, Side("top"), Fill("x"), Padx("2m"), Pady("2m"))
-	open := bar.TButton(Txt("Open ROM..."), Command(func() { chooseAndLoad(l) }))
-	Pack(open, Side("left"))
+	clear := bar.TButton(Txt("Clear"), Command(func() {
+		l.search.Configure(Textvariable(""))
+		l.render("")
+	}))
+	Pack(clear, Side("right"), Padx("2m"))
 	l.search = bar.TEntry(Width(30), Textvariable(""))
 	Pack(l.search, Side("right"))
 	Pack(bar.TLabel(Txt("Search item: ")), Side("right"))
