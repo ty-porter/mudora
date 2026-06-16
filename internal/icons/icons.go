@@ -91,7 +91,7 @@ var itemFile = map[string]string{
 
 	// Rupees.
 	"Rupee (Green)": "rupee-green-1",
-	"Rupees (Blue)": "rupee-blue-5",
+	"Rupee (Blue)":  "rupee-blue-5",
 	"Rupee (Red)":   "rupee-red-20",
 	"Rupees (20)":   "rupee-green-20",
 	"Rupees (50)":   "rupee-green-50",

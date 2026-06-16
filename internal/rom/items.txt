@@ -50,9 +50,9 @@
 0x31  Bombs (10)
 0x32  Big Key
 0x33  Map
-0x34  Rupee
-0x35  Rupees (5)
-0x36  Rupees (20)
+0x34  Rupee (Green)
+0x35  Rupee (Blue)
+0x36  Rupee (Red)
 0x37  Pendant of Courage
 0x38  Pendant of Wisdom
 0x39  Pendant of Power
@@ -69,7 +69,7 @@
 0x44  Arrows (10)
 0x45  Small Magic
 0x46  Rupees (300)
-0x47  Rupee (20)
+0x47  Rupees (20)
 0x48  Bottle (Super bee)
 0x49  Progressive Sword
 0x4A  Ocarina
@@ -133,20 +133,20 @@
 0x8D  Compass (Eastern Palace)
 0x8E  CompassH1
 0x8F  Compass (Hyrule Castle)
-0x92  BigKey (Ganon's Tower)
-0x93  BigKey (Turtle Rock)
-0x94  BigKey (Thieves Town)
-0x95  BigKey (Tower of Hera)
-0x96  BigKey (Ice Palace)
-0x97  BigKey (Skull Woods)
-0x98  BigKey (Misery Mire)
-0x99  BigKey (Palace of Darkness)
-0x9A  BigKey (Swamp Palace)
-0x9B  BigKey (Castle Tower)
-0x9C  BigKey (Desert Palace)
-0x9D  BigKey (Eastern Palace)
-0x9E  BigKeyH1
-0x9F  BigKey (Hyrule Castle)
+0x92  Big Key (Ganon's Tower)
+0x93  Big Key (Turtle Rock)
+0x94  Big Key (Thieves Town)
+0x95  Big Key (Tower of Hera)
+0x96  Big Key (Ice Palace)
+0x97  Big Key (Skull Woods)
+0x98  Big Key (Misery Mire)
+0x99  Big Key (Palace of Darkness)
+0x9A  Big Key (Swamp Palace)
+0x9B  Big Key (Castle Tower)
+0x9C  Big Key (Desert Palace)
+0x9D  Big Key (Eastern Palace)
+0x9E  Big KeyH1
+0x9F  Big Key (Hyrule Castle)
 0xA0  Key (Hyrule Castle)
 0xA1  KeyH1
 0xA2  Key (Eastern Palace)

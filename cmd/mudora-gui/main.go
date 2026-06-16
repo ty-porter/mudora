@@ -1,81 +1,74 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
-	"image"
-	"image/draw"
-	"image/png"
 	"os"
+	"strings"
 
+	"github.com/ty-porter/mudora/internal/alttp"
 	"github.com/ty-porter/mudora/internal/icons"
 	"github.com/ty-porter/mudora/internal/rom"
 	. "modernc.org/tk9.0"
 	_ "modernc.org/tk9.0/themes/azure"
 )
 
-// iconColWidth is the pixel width of the #0 icon column, and the canvas width
-// each sprite is centered onto. ttk's tree column left-aligns its image, so
-// centering the sprite within a column-wide transparent canvas is what makes it
-// appear centered in the column.
-const iconColWidth = 40
-
 func main() {
 	App.WmTitle("Mudora - ALttP ROM Inspector")
 
-	tv := buildUI()
-
+	list := buildUI()
 	if len(os.Args) > 1 {
-		load(tv, os.Args[1])
+		list.load(os.Args[1])
 	}
 
 	ActivateTheme("azure dark")
-
-	StyleLayout("Treeview.Item",
-		"Treeitem.padding", Sticky("nswe"), Children(
-			"Treeitem.image", Sticky(""),
-		),
-	)
-
 	if png, ok := icons.PNG("Book of Mudora"); ok {
 		App.IconPhoto(NewPhoto(Data(png)))
 	}
-
+	WmGeometry(App, "1000x800")
 	App.Wait()
 }
 
-func buildUI() (tv *TTreeviewWidget) {
+type regionList struct {
+	canvas  *CanvasWidget
+	inner   *TFrameWidget
+	row     int
+	created []*Window
+}
+
+type regionSection struct {
+	name     string
+	expanded bool
+	toggle   *TLabelWidget
+	rows     [][3]*Window
+	rowIndex []int
+}
+
+func buildUI() *regionList {
 	fr := TFrame()
+	cv := fr.Canvas(Background("#2b2b2b"), Highlightthickness(0))
 	sb := fr.TScrollbar()
+	inner := cv.TFrame()
+	cv.CreateWindow(0, 0, ItemWindow(inner.Window), Anchor("nw"))
 
-	// Only the #0 tree column can hold an image, and it is always leftmost, so
-	// the icon sits at the far left: icon | Location | Item.
-	tv = fr.TTreeview(
-		Selectmode("browse"),
-		Columns("loc item"),
-		Height(25),
-		Yscrollcommand(func(e *Event) { e.ScrollSet(sb) }),
-	)
+	l := &regionList{canvas: cv, inner: inner}
 
-	open := TButton(Txt("Open ROM..."), Command(func() { chooseAndLoad(tv) }))
+	open := TButton(Txt("Open ROM..."), Command(func() { chooseAndLoad(l) }))
 	Pack(open, Side("top"), Anchor("w"), Padx("2m"), Pady("2m"))
 
 	Pack(sb, Side("right"), Fill("y"))
-	Pack(tv, Expand(true), Fill("both"))
-	sb.Configure(Command(func(e *Event) { e.Yview(tv) }))
+	Pack(cv, Side("left"), Expand(true), Fill("both"))
+	cv.Configure(Yscrollcommand(func(e *Event) { e.ScrollSet(sb) }))
+	sb.Configure(Command(func(e *Event) { e.Yview(cv.Window) }))
 
-	tv.Column("#0", Anchor("center"), Width(iconColWidth), Stretch(false))
-	tv.Column("loc", Anchor("w"), Width(320))
-	tv.Column("item", Anchor("w"), Width(220))
-	tv.Heading("#0", Txt(""))
-	tv.Heading("loc", Txt("Location"))
-	tv.Heading("item", Txt("Item"))
+	Bind(inner, "<Configure>", Command(func() {
+		cv.Configure(Scrollregion(strings.Join(cv.Bbox("all"), " ")))
+	}))
 
 	Pack(fr, Expand(true), Fill("both"), Padx("2m"), Pady("2m"))
-	return tv
+	return l
 }
 
-func chooseAndLoad(tv *TTreeviewWidget) {
+func chooseAndLoad(l *regionList) {
 	paths := GetOpenFile(
 		Title("Open ALttPR ROM"),
 		Filetypes([]FileType{
@@ -86,10 +79,10 @@ func chooseAndLoad(tv *TTreeviewWidget) {
 	if len(paths) == 0 {
 		return
 	}
-	load(tv, paths[0])
+	l.load(paths[0])
 }
 
-func load(tv *TTreeviewWidget, path string) {
+func (l *regionList) load(path string) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		MessageBox(Icon("error"), Title("Mudora"),
@@ -97,19 +90,98 @@ func load(tv *TTreeviewWidget, path string) {
 		return
 	}
 
-	tv.Delete(tv.Children(""))
+	itemByLoc := make(map[string]string)
 	for _, e := range rom.Inspect(data) {
-		opts := []Opt{Values([]string{
-			e.Location,
-			e.Item,
-		})}
-		if img := iconFor(e.Item); img != nil {
-			opts = append(opts, Image(img))
-		}
-		tv.Insert("", "end", opts...)
+		itemByLoc[e.Location] = e.Item
+	}
+
+	l.clear()
+	for _, region := range alttp.RegionOrder {
+		l.addRegion(region, alttp.Regions[region], itemByLoc)
 	}
 	App.WmTitle("Mudora (inspecting " + path + ")")
 }
+
+func (l *regionList) clear() {
+	for _, w := range l.created {
+		Destroy(w)
+	}
+	l.created = nil
+	l.row = 0
+}
+
+func (l *regionList) addRegion(name string, locs []string, itemByLoc map[string]string) {
+	sec := &regionSection{name: name, expanded: true}
+
+	hdr := l.inner.TFrame()
+	l.created = append(l.created, hdr.Window)
+	Grid(hdr, Row(l.row), Column(0), Columnspan(3), Sticky("we"), Pady("1m"))
+	l.row++
+
+	sec.toggle = hdr.TLabel(Txt("▾  "+name), Width(regionNameWidth), Anchor("w"))
+	Pack(sec.toggle, Side("left"))
+	for _, loc := range locs {
+		item := itemByLoc[loc]
+		if alttp.IsProgression(item) {
+			if img := iconFor(item); img != nil {
+				Pack(hdr.TLabel(Image(img)), Side("left"), Padx(1))
+			}
+		}
+	}
+	Bind(hdr, "<Button-1>", Command(func() { l.toggle(sec) }))
+	Bind(sec.toggle, "<Button-1>", Command(func() { l.toggle(sec) }))
+
+	for _, loc := range locs {
+		item := itemByLoc[loc]
+		r := l.row
+		l.row++
+
+		locLbl := l.inner.TLabel(Txt(loc), Anchor("w"))
+		iconLbl := l.inner.TLabel()
+		if img := iconFor(item); img != nil {
+			iconLbl.Configure(Image(img))
+		}
+		itemLbl := l.inner.TLabel(Txt(item), Anchor("w"))
+
+		Grid(locLbl, Row(r), Column(0), Sticky("w"), Padx("48 0"))
+		Grid(iconLbl, Row(r), Column(1), Padx(6))
+		Grid(itemLbl, Row(r), Column(2), Sticky("w"))
+
+		l.created = append(l.created, locLbl.Window, iconLbl.Window, itemLbl.Window)
+		sec.rows = append(sec.rows, [3]*Window{locLbl.Window, iconLbl.Window, itemLbl.Window})
+		sec.rowIndex = append(sec.rowIndex, r)
+	}
+
+	l.toggle(sec)
+}
+
+func (l *regionList) toggle(sec *regionSection) {
+	sec.expanded = !sec.expanded
+	if !sec.expanded {
+		sec.toggle.Configure(Txt("▸  " + sec.name))
+		for _, row := range sec.rows {
+			GridForget(row[0], row[1], row[2])
+		}
+		return
+	}
+	sec.toggle.Configure(Txt("▾  " + sec.name))
+	for i, row := range sec.rows {
+		r := sec.rowIndex[i]
+		Grid(row[0], Row(r), Column(0), Sticky("w"), Padx("48 0"))
+		Grid(row[1], Row(r), Column(1), Padx(6))
+		Grid(row[2], Row(r), Column(2), Sticky("w"))
+	}
+}
+
+var regionNameWidth = func() int {
+	max := 0
+	for _, r := range alttp.RegionOrder {
+		if len(r) > max {
+			max = len(r)
+		}
+	}
+	return max + 5
+}()
 
 var photoCache = map[string]*Img{}
 
@@ -119,31 +191,8 @@ func iconFor(item string) *Img {
 	}
 	var img *Img
 	if data, ok := icons.PNG(item); ok {
-		img = NewPhoto(Data(center(data, iconColWidth)))
+		img = NewPhoto(Data(data))
 	}
 	photoCache[item] = img
 	return img
-}
-
-// center returns a copy of the PNG with the sprite horizontally centered on a
-// transparent canvas of the given width (height unchanged). If decoding fails
-// or the sprite is already at least that wide, the original bytes are returned.
-func center(data []byte, width int) []byte {
-	src, err := png.Decode(bytes.NewReader(data))
-	if err != nil {
-		return data
-	}
-	b := src.Bounds()
-	if b.Dx() >= width {
-		return data
-	}
-	canvas := image.NewNRGBA(image.Rect(0, 0, width, b.Dy()))
-	off := (width - b.Dx()) / 2
-	draw.Draw(canvas, image.Rect(off, 0, off+b.Dx(), b.Dy()), src, b.Min, draw.Src)
-
-	var buf bytes.Buffer
-	if err := png.Encode(&buf, canvas); err != nil {
-		return data
-	}
-	return buf.Bytes()
 }

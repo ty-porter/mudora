@@ -1,5 +1,25 @@
 package alttp
 
+var RegionOrder = []string{
+	"Light World",
+	"Hyrule Castle",
+	"Eastern Palace",
+	"Desert Palace",
+	"Death Mountain",
+	"Tower of Hera",
+	"Castle Tower",
+	"Dark World",
+	"Palace of Darkness",
+	"Swamp Palace",
+	"Skull Woods",
+	"Thieves' Town",
+	"Ice Palace",
+	"Misery Mire",
+	"Turtle Rock",
+	"Ganon's Tower",
+	"Special",
+}
+
 var Regions = map[string][]string{
 	"Light World": {
 		"Sahasrahla's Hut - Left",
