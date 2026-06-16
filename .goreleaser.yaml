@@ -1,0 +1,51 @@
+version: 2
+
+project_name: mudora
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: cli
+    main: ./cmd/mudora
+    binary: mudora
+    env: [CGO_ENABLED=0]
+    goos: [linux, windows, darwin]
+    goarch: [amd64, arm64]
+    ldflags:
+      - -s -w
+      - -X github.com/ty-porter/mudora/internal.Version={{ .Version }}
+
+  - id: gui
+    main: ./cmd/mudora-gui
+    binary: mudora-gui
+    env: [CGO_ENABLED=0]
+    goos: [linux, windows, darwin]
+    goarch: [amd64, arm64]
+    ldflags:
+      - -s -w
+      - -X github.com/ty-porter/mudora/internal.Version={{ .Version }}
+    overrides:
+      # No console window when launching the GUI on Windows.
+      - goos: windows
+        ldflags:
+          - -s -w
+          - -X github.com/ty-porter/mudora/internal.Version={{ .Version }}
+          - -H windowsgui
+
+archives:
+  - formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
+
+checksum:
+  name_template: checksums.txt
+
+release:
+  github:
+    owner: ty-porter
+    name: mudora
