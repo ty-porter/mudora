@@ -12,15 +12,22 @@ import (
 	_ "modernc.org/tk9.0/themes/azure"
 )
 
+const (
+	sectionBg = "#3f3f3f"
+	sectionFg = "#e6e6e6"
+	surround  = "#2b2b2b"
+)
+
 func main() {
 	App.WmTitle("Mudora - ALttP ROM Inspector")
 
 	list := buildUI()
+
+	ActivateTheme("azure dark")
+
 	if len(os.Args) > 1 {
 		list.load(os.Args[1])
 	}
-
-	ActivateTheme("azure dark")
 	if png, ok := icons.PNG("Book of Mudora"); ok {
 		App.IconPhoto(NewPhoto(Data(png)))
 	}
@@ -30,7 +37,7 @@ func main() {
 
 type regionList struct {
 	canvas  *CanvasWidget
-	inner   *TFrameWidget
+	inner   *FrameWidget
 	row     int
 	created []*Window
 }
@@ -38,7 +45,7 @@ type regionList struct {
 type regionSection struct {
 	name     string
 	expanded bool
-	toggle   *TLabelWidget
+	toggle   *LabelWidget
 	rows     [][3]*Window
 	rowIndex []int
 }
@@ -47,8 +54,9 @@ func buildUI() *regionList {
 	fr := TFrame()
 	cv := fr.Canvas(Background("#2b2b2b"), Highlightthickness(0))
 	sb := fr.TScrollbar()
-	inner := cv.TFrame()
+	inner := cv.Frame(Background(surround))
 	cv.CreateWindow(0, 0, ItemWindow(inner.Window), Anchor("nw"))
+	GridColumnConfigure(inner.Window, 0, Weight(1))
 
 	l := &regionList{canvas: cv, inner: inner}
 
@@ -113,41 +121,42 @@ func (l *regionList) clear() {
 func (l *regionList) addRegion(name string, locs []string, itemByLoc map[string]string) {
 	sec := &regionSection{name: name, expanded: true}
 
-	hdr := l.inner.TFrame()
-	l.created = append(l.created, hdr.Window)
-	Grid(hdr, Row(l.row), Column(0), Columnspan(3), Sticky("we"), Pady("1m"))
+	box := l.inner.Frame(Background(sectionBg), Relief("solid"), Borderwidth(1), Padx(6), Pady(4))
+	l.created = append(l.created, box.Window)
+	Grid(box, Row(l.row), Column(0), Sticky("we"), Padx("2m"), Pady("1m"))
 	l.row++
 
-	sec.toggle = hdr.TLabel(Txt("▾  "+name), Width(regionNameWidth), Anchor("w"))
+	hdr := box.Frame(Background(sectionBg))
+	Grid(hdr, Row(0), Column(0), Columnspan(3), Sticky("we"))
+
+	sec.toggle = hdr.Label(Txt("▾  "+name), Background(sectionBg), Foreground(sectionFg), Width(regionNameWidth), Anchor("w"))
 	Pack(sec.toggle, Side("left"))
 	for _, loc := range locs {
 		item := itemByLoc[loc]
 		if alttp.IsProgression(item) {
 			if img := iconFor(item); img != nil {
-				Pack(hdr.TLabel(Image(img)), Side("left"), Padx(1))
+				Pack(hdr.Label(Image(img), Background(sectionBg)), Side("left"), Padx(1))
 			}
 		}
 	}
 	Bind(hdr, "<Button-1>", Command(func() { l.toggle(sec) }))
 	Bind(sec.toggle, "<Button-1>", Command(func() { l.toggle(sec) }))
 
-	for _, loc := range locs {
+	for i, loc := range locs {
 		item := itemByLoc[loc]
-		r := l.row
-		l.row++
+		r := i + 1
 
-		locLbl := l.inner.TLabel(Txt(loc), Anchor("w"))
-		iconLbl := l.inner.TLabel()
+		locLbl := box.Label(Txt(loc), Background(sectionBg), Foreground(sectionFg), Anchor("w"))
+		iconLbl := box.Label(Background(sectionBg))
 		if img := iconFor(item); img != nil {
 			iconLbl.Configure(Image(img))
 		}
-		itemLbl := l.inner.TLabel(Txt(item), Anchor("w"))
+		itemLbl := box.Label(Txt(item), Background(sectionBg), Foreground(sectionFg), Anchor("w"))
 
 		Grid(locLbl, Row(r), Column(0), Sticky("w"), Padx("48 0"))
 		Grid(iconLbl, Row(r), Column(1), Padx(6))
 		Grid(itemLbl, Row(r), Column(2), Sticky("w"))
 
-		l.created = append(l.created, locLbl.Window, iconLbl.Window, itemLbl.Window)
 		sec.rows = append(sec.rows, [3]*Window{locLbl.Window, iconLbl.Window, itemLbl.Window})
 		sec.rowIndex = append(sec.rowIndex, r)
 	}
