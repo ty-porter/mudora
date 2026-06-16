@@ -21,7 +21,7 @@ import (
 const iconColWidth = 40
 
 func main() {
-	App.WmTitle("Mudora — ROM Inspector")
+	App.WmTitle("Mudora - ALttP ROM Inspector")
 
 	tv := buildUI()
 
@@ -31,15 +31,15 @@ func main() {
 
 	ActivateTheme("azure dark")
 
-	// Each row is a flat, non-expandable list item, so drop the tree-column
-	// disclosure indicator (the arrow). The #0 column holds only the icon, so
-	// give the image the whole cell with no -side and empty -sticky, which
-	// centers it instead of left-packing. Must run after ActivateTheme.
 	StyleLayout("Treeview.Item",
 		"Treeitem.padding", Sticky("nswe"), Children(
 			"Treeitem.image", Sticky(""),
 		),
 	)
+
+	if png, ok := icons.PNG("Book of Mudora"); ok {
+		App.IconPhoto(NewPhoto(Data(png)))
+	}
 
 	App.Wait()
 }

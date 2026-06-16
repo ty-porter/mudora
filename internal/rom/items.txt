@@ -1,12 +1,12 @@
-0x0  L1SwordAndShield
-0x1  L2Sword
-0x2  L3Sword
-0x3  L4Sword
-0x4  BlueShield
-0x5  RedShield
-0x6  MirrorShield
-0x7  FireRod
-0x8  IceRod
+0x0  Progressive Sword
+0x1  Progressive Sword
+0x2  Progressive Sword
+0x3  Progressive Sword
+0x4  Progressive Shield
+0x5  Progressive Shield
+0x6  Progressive Shield
+0x7  Fire Rod
+0x8  Ice Rod
 0x9  Hammer
 0xA  Hookshot
 0xB  Bow
@@ -18,147 +18,147 @@
 0x11  Quake
 0x12  Lamp
 0x13  Shovel
-0x14  OcarinaInactive
-0x15  CaneOfSomaria
+0x14  Flute
+0x15  Cane of Somaria
 0x16  Bottle
-0x17  PieceOfHeart
-0x18  CaneOfByrna
+0x17  Piece of Heart
+0x18  Cane of Byrna
 0x19  Cape
-0x1A  MagicMirror
-0x1B  PowerGlove
-0x1C  TitansMitt
-0x1D  BookOfMudora
+0x1A  Magic Mirror
+0x1B  Progressive Glove
+0x1C  Progressive Glove
+0x1D  Book of Mudora
 0x1E  Flippers
-0x1F  MoonPearl
+0x1F  Moon Pearl
 0x20  Crystal
-0x21  BugCatchingNet
-0x22  BlueMail
-0x23  RedMail
+0x21  Bug Net
+0x22  Progressive Mail
+0x23  Progressive Mail
 0x24  Key
 0x25  Compass
-0x26  HeartContainerNoAnimation
+0x26  Heart Container
 0x27  Bomb
-0x28  ThreeBombs
+0x28  Bombs (3)
 0x29  Mushroom
-0x2A  RedBoomerang
-0x2B  BottleWithRedPotion
-0x2C  BottleWithGreenPotion
-0x2D  BottleWithBluePotion
-0x2E  RedPotion
-0x2F  GreenPotion
-0x30  BluePotion
-0x31  TenBombs
-0x32  BigKey
+0x2A  Boomerang (Red)
+0x2B  Bottle (Red Potion)
+0x2C  Bottle (Green Potion)
+0x2D  Bottle (Blue Potion)
+0x2E  Red Potion
+0x2F  Green Potion
+0x30  Blue Potion
+0x31  Bombs (10)
+0x32  Big Key
 0x33  Map
-0x34  OneRupee
-0x35  FiveRupees
-0x36  TwentyRupees
-0x37  PendantOfCourage
-0x38  PendantOfWisdom
-0x39  PendantOfPower
-0x3A  BowAndArrows
-0x3B  BowAndSilverArrows
-0x3C  BottleWithBee
-0x3D  BottleWithFairy
-0x3E  BossHeartContainer
-0x3F  HeartContainer
-0x40  OneHundredRupees
-0x41  FiftyRupees
+0x34  Rupee
+0x35  Rupees (5)
+0x36  Rupees (20)
+0x37  Pendant of Courage
+0x38  Pendant of Wisdom
+0x39  Pendant of Power
+0x3A  Progressive Bow
+0x3B  Progressive Bow
+0x3C  Bottle (Bee)
+0x3D  Bottle (Faerie)
+0x3E  Heart Container
+0x3F  Heart Container
+0x40  Rupees (100)
+0x41  Rupees (50)
 0x42  Heart
 0x43  Arrow
-0x44  TenArrows
-0x45  SmallMagic
-0x46  ThreeHundredRupees
-0x47  TwentyRupees2
-0x48  BottleWithGoldBee
-0x49  L1Sword
-0x4A  OcarinaActive
-0x4B  PegasusBoots
-0x4C  BombUpgrade50
-0x4D  ArrowUpgrade70
-0x4E  HalfMagic
-0x4F  QuarterMagic
-0x50  MasterSword
-0x51  BombUpgrade5
-0x52  BombUpgrade10
-0x53  ArrowUpgrade5
-0x54  ArrowUpgrade10
+0x44  Arrows (10)
+0x45  Small Magic
+0x46  Rupees (300)
+0x47  Rupee (20)
+0x48  Bottle (Super bee)
+0x49  Progressive Sword
+0x4A  Ocarina
+0x4B  Pegasus Boots
+0x4C  Bomb Upgrade (50)
+0x4D  Arrow Upgrade (70)
+0x4E  Half Magic
+0x4F  Quarter Magic
+0x50  Master Sword
+0x51  Bomb Upgrade (5)
+0x52  Bomb Upgrade (10)
+0x53  Arrow Upgrade (5)
+0x54  Arrow Upgrade (10)
 0x55  Programmable1
 0x56  Programmable2
 0x57  Programmable3
-0x58  SilverArrowUpgrade
+0x58  Silver Arrow Upgrade
 0x59  Rupoor
 0x5A  Nothing
-0x5B  RedClock
-0x5C  BlueClock
-0x5D  GreenClock
-0x5E  ProgressiveSword
-0x5F  ProgressiveShield
-0x60  ProgressiveArmor
-0x61  ProgressiveGlove
+0x5B  Red Clock
+0x5C  Blue Clock
+0x5D  Green Clock
+0x5E  Progressive Sword
+0x5F  Progressive Shield
+0x60  Progressive Armor
+0x61  Progressive Glove
 0x62  singleRNG
 0x63  multiRNG
-0x64  ProgressiveBow
-0x65  ProgressiveBowAlternate
+0x64  Progressive Bow
+0x65  Progressive Bow
 0x6A  Triforce
 0x6B  PowerStar
 0x6C  TriforcePiece
 0x70  MapLW
 0x71  MapDW
-0x72  MapA2
-0x73  MapD7
-0x74  MapD4
-0x75  MapP3
-0x76  MapD5
-0x77  MapD3
-0x78  MapD6
-0x79  MapD1
-0x7A  MapD2
-0x7B  MapA1
-0x7C  MapP2
-0x7D  MapP1
+0x72  Map (Ganon's Tower)
+0x73  Map (Turtle Rock)
+0x74  Map (Thieves Town)
+0x75  Map (Tower of Hera)
+0x76  Map (Ice Palace)
+0x77  Map (Skull Woods)
+0x78  Map
+0x79  Map (Palace of Darkness)
+0x7A  Map (Swamp Palace)
+0x7B  Map (Castle Tower)
+0x7C  Map (Desert Palace)
+0x7D  Map (Eastern Palace)
 0x7E  MapH1
-0x7F  MapH2
-0x82  CompassA2
-0x83  CompassD7
-0x84  CompassD4
-0x85  CompassP3
-0x86  CompassD5
-0x87  CompassD3
-0x88  CompassD6
-0x89  CompassD1
-0x8A  CompassD2
-0x8B  CompassA1
-0x8C  CompassP2
-0x8D  CompassP1
+0x7F  Map (Hyrule Castle)
+0x82  Compass (Ganon's Tower)
+0x83  Compass (Turtle Rock)
+0x84  Compass (Thieves Town)
+0x85  Compass (Tower of Hera)
+0x86  Compass (Ice Palace)
+0x87  Compass (Skull Woods)
+0x88  Compass (Misery Mire)
+0x89  Compass (Palace of Darkness)
+0x8A  Compass (Swamp Palace)
+0x8B  Compass (Castle Tower)
+0x8C  Compass (Desert Palace)
+0x8D  Compass (Eastern Palace)
 0x8E  CompassH1
-0x8F  CompassH2
-0x92  BigKeyA2
-0x93  BigKeyD7
-0x94  BigKeyD4
-0x95  BigKeyP3
-0x96  BigKeyD5
-0x97  BigKeyD3
-0x98  BigKeyD6
-0x99  BigKeyD1
-0x9A  BigKeyD2
-0x9B  BigKeyA1
-0x9C  BigKeyP2
-0x9D  BigKeyP1
+0x8F  Compass (Hyrule Castle)
+0x92  BigKey (Ganon's Tower)
+0x93  BigKey (Turtle Rock)
+0x94  BigKey (Thieves Town)
+0x95  BigKey (Tower of Hera)
+0x96  BigKey (Ice Palace)
+0x97  BigKey (Skull Woods)
+0x98  BigKey (Misery Mire)
+0x99  BigKey (Palace of Darkness)
+0x9A  BigKey (Swamp Palace)
+0x9B  BigKey (Castle Tower)
+0x9C  BigKey (Desert Palace)
+0x9D  BigKey (Eastern Palace)
 0x9E  BigKeyH1
-0x9F  BigKeyH2
-0xA0  KeyH2
+0x9F  BigKey (Hyrule Castle)
+0xA0  Key (Hyrule Castle)
 0xA1  KeyH1
-0xA2  KeyP1
-0xA3  KeyP2
-0xA4  KeyA1
-0xA5  KeyD2
-0xA6  KeyD1
-0xA7  KeyD6
-0xA8  KeyD3
-0xA9  KeyD5
-0xAA  KeyP3
-0xAB  KeyD4
-0xAC  KeyD7
-0xAD  KeyA2
+0xA2  Key (Eastern Palace)
+0xA3  Key (Desert Palace)
+0xA4  Key (Castle Tower)
+0xA5  Key (Swamp Palace)
+0xA6  Key (Palace of Darkness)
+0xA7  Key (Misery Mire)
+0xA8  Key (Skull Woods)
+0xA9  Key (Ice Palace)
+0xAA  Key (Tower of Hera)
+0xAB  Key (Thieves Town)
+0xAC  Key (Turtle Rock)
+0xAD  Key (Ganon's Tower)
 0xAF  KeyGK
