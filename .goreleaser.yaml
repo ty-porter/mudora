@@ -15,24 +15,7 @@ builds:
     goarch: [amd64, arm64]
     ldflags:
       - -s -w
-      - -X github.com/ty-porter/mudora/internal.Version={{ .Version }}
-
-  - id: gui
-    main: ./cmd/mudora-gui
-    binary: mudora-gui
-    env: [CGO_ENABLED=0]
-    goos: [linux, windows, darwin]
-    goarch: [amd64, arm64]
-    ldflags:
-      - -s -w
-      - -X github.com/ty-porter/mudora/internal.Version={{ .Version }}
-    overrides:
-      # No console window when launching the GUI on Windows.
-      - goos: windows
-        ldflags:
-          - -s -w
-          - -X github.com/ty-porter/mudora/internal.Version={{ .Version }}
-          - -H windowsgui
+      - -X github.com/alttpr-mudora/mudora/internal.Version={{ .Version }}
 
 archives:
   - formats: [tar.gz]
@@ -47,5 +30,5 @@ checksum:
 
 release:
   github:
-    owner: ty-porter
+    owner: alttpr-mudora
     name: mudora

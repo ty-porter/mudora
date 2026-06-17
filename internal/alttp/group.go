@@ -3,7 +3,7 @@ package alttp
 import (
 	"strings"
 
-	"github.com/ty-porter/mudora/internal/rom"
+	"github.com/alttpr-mudora/mudora/internal/rom"
 )
 
 type Placement struct {

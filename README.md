@@ -22,16 +22,6 @@ go run mudora <rom.sfc> [item-query]
 go run mudora --version
 ```
 
-Run a GUI:
-
-```sh
-go run mudora-gui <rom.sfc>
-```
-
-<a href="assets/app.png">
-  <img src="assets/app.png" height="480"/>
-</a>
-
 # Contact
 
 Ty Porter

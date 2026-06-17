@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mudora - ALttPR ROM Inspector</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="bar">
+    <input type="file" id="rom-input" accept=".sfc,.smc">
+    <input type="text" id="search" placeholder="Search item..." disabled>
+    <button id="clear" disabled>Clear</button>
+    <span id="version"></span>
+    <a href="https://github.com/alttpr-mudora/mudora" target="_blank" rel="noopener">GitHub</a>
+  </header>
+  <p id="status">Choose a ROM file. It is parsed entirely in your browser and never uploaded.</p>
+  <div id="results"></div>
+
+  <script src="wasm_exec.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
