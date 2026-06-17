@@ -5,9 +5,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ty-porter/mudora/internal"
-	"github.com/ty-porter/mudora/internal/alttp"
-	"github.com/ty-porter/mudora/internal/rom"
+	"github.com/alttpr-mudora/mudora/internal"
+	"github.com/alttpr-mudora/mudora/internal/alttp"
+	"github.com/alttpr-mudora/mudora/internal/rom"
 )
 
 func main() {

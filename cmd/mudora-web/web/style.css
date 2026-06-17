@@ -1,0 +1,93 @@
+:root {
+  --bg: #2b2b2b;
+  --section-bg: #3f3f3f;
+  --fg: #e6e6e6;
+  --accent: #4ea1ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, Segoe UI, sans-serif;
+}
+
+#bar {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--section-bg);
+}
+
+#search {
+  flex: 1;
+  max-width: 20rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--section-bg);
+  border-radius: 4px;
+}
+
+#clear, #rom-input::file-selector-button {
+  background: var(--section-bg);
+  color: var(--fg);
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+#version {
+  margin-left: auto;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+#bar a {
+  color: var(--accent);
+  text-decoration: none;
+}
+#bar a:hover { text-decoration: underline; }
+
+#status {
+  margin: 0.5rem 1rem;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+#results {
+  padding: 0 1rem 1rem;
+}
+
+.region {
+  background: var(--section-bg);
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+
+.region-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
+.region-name { font-weight: 600; min-width: 12rem; }
+
+.region-rows { display: none; }
+.region.expanded .region-rows { display: block; }
+
+.row {
+  display: grid;
+  grid-template-columns: 22rem 28px 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem 0.25rem 2.25rem;
+}
+
