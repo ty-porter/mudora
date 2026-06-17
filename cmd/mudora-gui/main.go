@@ -214,7 +214,7 @@ func (l *regionList) addRegion(g alttp.Group, collapsed bool) {
 	for i, p := range g.Locations {
 		r := i + 1
 
-		locLbl := box.Label(Txt(p.Location), Background(sectionBg), Foreground(sectionFg), Anchor("w"))
+		locLbl := box.Label(Txt(p.Location), Background(sectionBg), Foreground(sectionFg), Width(locationNameWidth), Anchor("w"))
 		iconLbl := box.Label(Background(sectionBg))
 		if img := iconFor(p.Item); img != nil {
 			iconLbl.Configure(Image(img))
@@ -260,6 +260,18 @@ var regionNameWidth = func() int {
 		}
 	}
 	return max + 5
+}()
+
+var locationNameWidth = func() int {
+	max := 0
+	for _, locs := range alttp.Regions {
+		for _, loc := range locs {
+			if len(loc) > max {
+				max = len(loc)
+			}
+		}
+	}
+	return max + 2
 }()
 
 var photoCache = map[string]*Img{}
