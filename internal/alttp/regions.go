@@ -79,6 +79,7 @@ var Regions = map[string][]string{
 		"Hyrule Castle - Map Chest",
 		"Hyrule Castle - Zelda's Cell",
 		"Secret Passage",
+		"Link's Uncle",
 	},
 	"Eastern Palace": {
 		"Eastern Palace - Compass Chest",
@@ -135,8 +136,6 @@ var Regions = map[string][]string{
 		"Pyramid",
 		"Pyramid Fairy - Left",
 		"Pyramid Fairy - Right",
-		"Pyramid Fairy - Bow",
-		"Pyramid Fairy - Sword",
 		"Brewery",
 		"C-Shaped House",
 		"Chest Game",
