@@ -5,4 +5,4 @@
 *.wasm
 wasm_exec.js
 
-scripts/
+tmp/
